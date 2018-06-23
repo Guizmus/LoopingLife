@@ -1,0 +1,3 @@
+window.defines = {
+  towns : ["test"]
+}
