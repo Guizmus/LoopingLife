@@ -1,9 +1,25 @@
 UI.componentClasses.menu = {
    selector : '#menu',
    html : function (index) { // index is the index of the element in the selected list. Used if the selector is multiple
-     return "<select id='localization_menu'><option value='en'>English</option></select>";
+     var html = "";
+     if (Main.lang)
+        html += UI.componentClasses.menu.htmlLocalizationMenu()
+      html += " | ";
+      html +=Localization.txt("meta>localized_std_text","standard");
+      html += " | ";
+      html +=Localization.txt("meta>localized_game_text","game");
+     return html;
    },
    eventListeners : [
      ['#localization_menu','change',Localization.change]
    ],
+   htmlLocalizationMenu : function() {
+     var lg = Localization.supportedLang;
+     var html = "<select id='localization_menu'>";
+     $.each(lg,function(val,str) {
+       html += "<option value='"+val+"' "+(Localization.currentLang == val ? "selected" : "")+">"+str+"</option>"
+     })
+     html += "</select>";
+     return html;
+   }
  }

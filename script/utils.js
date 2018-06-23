@@ -17,7 +17,7 @@ window.Utils = {
           $.each(window[motherClass].dependancies,function(scriptType,scriptList){
             switch (scriptType) {
               case 'js' :
-                Utils.loading.loadScripts(window[motherClass].dependancies.js,Utils.loading.doneLoading('js',motherClass));
+                Utils.loading.loadScripts(scriptList,Utils.loading.doneLoading(scriptType,motherClass));
                 break;
               default : console.warn('loading unsupported dependancie type : '+scriptType)
             }
@@ -36,6 +36,9 @@ window.Utils = {
         Utils.loading.loadScripts(scripts,callback);
       });
     },
+    loadXML : function (xml,callback) {
+      $.get(xml,null,callback);
+    },
     doneLoading : function(loadingCat,motherClass) { // creates the callback that will updates the dependanciesLoaded after loading them
       return function () {
         Utils.loading.dependanciesLoaded[motherClass][loadingCat] = true;
@@ -47,8 +50,18 @@ window.Utils = {
       $.each(Utils.loading.dependanciesLoaded[motherClass],function(scriptType,loadState){
         done = done && loadState;
       });
-      if (done)
+      if (done) {
+        if (window[motherClass].lang)
+          Localization.localizeGame();
         typeof(window[motherClass].onDependanciesLoaded) != "undefined" ? window[motherClass].onDependanciesLoaded() : false;
+      }
     },
+  },
+  getUrlVars : function() {
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+          vars[key] = value;
+      });
+      return vars;
   }
 }
