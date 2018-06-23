@@ -29,7 +29,7 @@ window.GameState = {
 
   },
   registeredVars : {},
-  registerVar :  function (className) {
+  registerVar :  function (className) { // every registered var is a class, that needs to have 2 functions : laodGameState and saveGameSate
     GameState.registeredVars.push(className);
   }
 }

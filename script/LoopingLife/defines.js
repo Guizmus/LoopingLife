@@ -1,3 +1,10 @@
 window.defines = {
-  towns : ["test"],
+  lifeStages : {
+    tutorialPhase : {
+      name : "Baby"
+    },
+    learningPhase : {
+      name : "Childhood"
+    }
+  },
 }
