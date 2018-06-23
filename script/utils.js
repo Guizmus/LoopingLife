@@ -25,6 +25,8 @@ window.Utils = {
       }
     },
     loadScripts : function(scripts,callback) { // handling sequential loading for js scripts
+      if (typeof(scripts) == "string")
+        scripts = [scripts];
       if (scripts.length == 0) {
         return callback.call(this);
       }

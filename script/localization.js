@@ -1,0 +1,5 @@
+window.Localization = {
+  change : function () {
+    
+  }
+}
