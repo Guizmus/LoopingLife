@@ -1,0 +1,5 @@
+window.UI = {
+  init : function () {
+    
+  }
+}

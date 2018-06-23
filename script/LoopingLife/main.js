@@ -1,12 +1,13 @@
 window.Main = {
   dependancies : {
     js : [
-      'script/defines.js',
       'script/gamestate.js',
+      'script/ui.js',
+      'GAMEDIR/defines.js',
     ],
   },
   onDependanciesLoaded: function () {
-    GameState.init('LoopingLife');
-    console.log(defines);
+    GameState.init();
+    UI.init();
   }
 }

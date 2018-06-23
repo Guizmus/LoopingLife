@@ -1,3 +1,3 @@
 window.defines = {
-  towns : ["test"]
+  towns : ["test"],
 }

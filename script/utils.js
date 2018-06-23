@@ -1,6 +1,7 @@
 window.Utils = {
-  init : function() {
-    this.loading.loadMotherScript('script/main.js','Main');
+  init : function(gameName) {
+    Utils.gameName = gameName;
+    this.loading.loadMotherScript('script/'+Utils.gameName+'/main.js','Main');
   },
   loading : { // loading logic. Will load motherScript, and then all dependancies mentioned in it. Then, will call motherClass.onDependanciesLoaded
     loadMotherScript : function (motherScript,motherClass) {// motherclass is the name of the class in the motherscript script
@@ -28,6 +29,7 @@ window.Utils = {
         return callback.call(this);
       }
       script = scripts.pop();
+      script = script.replace("GAMEDIR","script/"+Utils.gameName);
       $.getScript(script, function() {
         Utils.loading.loadScripts(scripts,callback);
       });
