@@ -1,4 +1,4 @@
-var Utils = {
+window.Utils = {
   init : function() {
     this.loading.loadMotherScript('script/main.js','Main');
   },
