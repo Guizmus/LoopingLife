@@ -31,7 +31,11 @@ window.Localization = {
   txt : function(path,lib) {
     if (lib == "game")
       lib = Utils.gameName;
-
-    return $(Localization.libs[lib]).find(path).html();
+    var txt = $(Localization.libs[lib]).find(path).html();
+    if (typeof(txt)=="undefined") {
+      console.warn("Missing translation in lang '"+ Localization.currentLang + "' for key "+path);
+      txt = "["+path+"]";
+    }
+    return txt;
   }
 }
