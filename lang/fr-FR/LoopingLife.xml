@@ -1,4 +1,51 @@
 <?xml version="1.0"?>
-<meta>
-  <localized_game_text>Texte de jeu traduit !</localized_game_text>
-</meta>
+<body>
+  <lifeStages>
+    <tutorialPhase>
+      <libel>Nourisson</libel>
+    </tutorialPhase>
+    <learningPhase>
+      <libel>Enfant</libel>
+    </learningPhase>
+  </lifeStages>
+  <needs>
+    <lifeMater>
+      <libel>Essence vitale</libel>
+    </lifeMater>
+    <enjoyment>
+      <libel>Joie</libel>
+    </enjoyment>
+  </needs>
+  <statistics>
+    <stamina>
+      <libel>Endurance</libel>
+    </stamina>
+    <imagination>
+      <libel>Imagination</libel>
+    </imagination>
+    <charisma>
+      <libel>Charisme</libel>
+    </charisma>
+  </statistics>
+  <actions>
+    <tutorialPhase>
+      <changeLifeStage>
+        <libel>Grandir</libel>
+      </changeLifeStage>
+      <crying>
+        <libel>Pleurer</libel>
+      </crying>
+      <playing>
+        <libel>Jouer</libel>
+      </playing>
+      <resting>
+        <libel>Dormir</libel>
+      </resting>
+    </tutorialPhase>
+    <learningPhase>
+      <resting>
+        <libel>Dormir</libel>
+      </resting>
+    </learningPhase>
+  </actions>
+</body>

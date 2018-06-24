@@ -1,4 +1,51 @@
 <?xml version="1.0"?>
-<meta>
-  <localized_game_text>Localized Game text !</localized_game_text>
-</meta>
+<body>
+  <lifeStages>
+    <tutorialPhase>
+      <libel>Baby</libel>
+    </tutorialPhase>
+    <learningPhase>
+      <libel>Child</libel>
+    </learningPhase>
+  </lifeStages>
+  <needs>
+    <lifeMater>
+      <libel>Life Essence</libel>
+    </lifeMater>
+    <enjoyment>
+      <libel>Joy</libel>
+    </enjoyment>
+  </needs>
+  <statistics>
+    <stamina>
+      <libel>Stamina</libel>
+    </stamina>
+    <imagination>
+      <libel>Imagination</libel>
+    </imagination>
+    <charisma>
+      <libel>Charisma</libel>
+    </charisma>
+  </statistics>
+  <actions>
+    <tutorialPhase>
+      <changeLifeStage>
+        <libel>Grow up</libel>
+      </changeLifeStage>
+      <crying>
+        <libel>Cry</libel>
+      </crying>
+      <playing>
+        <libel>Play</libel>
+      </playing>
+      <resting>
+        <libel>Sleep</libel>
+      </resting>
+    </tutorialPhase>
+    <learningPhase>
+      <resting>
+        <libel>Sleep</libel>
+      </resting>
+    </learningPhase>
+  </actions>
+</body>
