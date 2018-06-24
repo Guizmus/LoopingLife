@@ -1,14 +1,10 @@
-UI.componentClasses.menu = {
+UI.componentClasses.menu = jQuery.fn.extend(UI.proto,{
    selector : '#menu',
    html : function (index) { // index is the index of the element in the selected list. Used if the selector is multiple
      var html = "";
      if (Main.lang)
         html += UI.componentClasses.menu.htmlLocalizationMenu();
       html += UI.componentClasses.menu.htmlSaveButtons();
-      // html += " | ";
-      // html +=Localization.txt("meta>localized_std_text","standard");
-      // html += " | ";
-      // html +=Localization.txt("meta>localized_game_text","game");
      return html;
    },
    eventListeners : [
@@ -30,4 +26,4 @@ UI.componentClasses.menu = {
      html += "<button id='load_button'>"+Localization.txt("buttons>load","standard")+"</button>";
      return html;
    }
-}
+});

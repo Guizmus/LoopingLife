@@ -30,7 +30,7 @@ window.Utils = {
       if (scripts.length == 0) {
         return callback.call(this);
       }
-      script = scripts.pop();
+      script = scripts.shift();
       script = script.replace("GAMEDIR","script/"+Utils.gameName);
       $.getScript(script, function() {
         Utils.loading.loadScripts(scripts,callback);

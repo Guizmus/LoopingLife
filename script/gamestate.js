@@ -43,5 +43,14 @@ window.GameState = {
     }
     GameState.registeredVars.push(className);
     return true;
+  },
+  proto : {
+    data : {},
+    loadGameState : function (data) {
+      this.data = data;
+    },
+    saveGameState : function () {
+      return this.data;
+    }
   }
 }

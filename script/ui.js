@@ -9,10 +9,12 @@ window.UI = {
   hook : null,
   componentClasses : {},
   components : [],
-  addComponent : function(component) {
+  addComponent : function(component,callback) {
     Utils.loading.loadScripts("script/UIComponent/"+component+".js",function(){
       UI.components.push(component);
       UI.componentClasses[component].toDraw = true;
+      if (typeof(callback) == "function")
+        callback.call(this);
     });
   },
   draw : function (components) {
@@ -32,4 +34,12 @@ window.UI = {
   registerStandardComponents : function () {
     UI.addComponent('menu');
   },
+  proto : {
+       selector : null,
+       html : function (index) {
+         console.warn('Element has no html to draw')
+         return '';
+       },
+       eventListeners : [],
+  }
 }
