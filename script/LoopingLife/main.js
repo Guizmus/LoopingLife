@@ -4,6 +4,7 @@ window.Main = {
       'script/gamestate.js',
       'script/ui.js',
       'GAMEDIR/defines.js',
+      'script/gamemechanics.js',
     ],
   },
   lang : true,

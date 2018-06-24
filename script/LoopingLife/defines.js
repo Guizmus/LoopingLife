@@ -13,11 +13,11 @@ window.defines = {
       mechanic : {
         tutorialPhase : {
           type : 'decay',
-          rate : -1,
+          rate : 1,
         },
         learningPhase : {
           type : 'decay',
-          rate : -2,
+          rate : 2,
         },
       },
       triggerCondition : function(gameState,value) {
