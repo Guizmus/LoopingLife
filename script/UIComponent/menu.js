@@ -3,15 +3,18 @@ UI.componentClasses.menu = {
    html : function (index) { // index is the index of the element in the selected list. Used if the selector is multiple
      var html = "";
      if (Main.lang)
-        html += UI.componentClasses.menu.htmlLocalizationMenu()
-      html += " | ";
-      html +=Localization.txt("meta>localized_std_text","standard");
-      html += " | ";
-      html +=Localization.txt("meta>localized_game_text","game");
+        html += UI.componentClasses.menu.htmlLocalizationMenu();
+      html += UI.componentClasses.menu.htmlSaveButtons();
+      // html += " | ";
+      // html +=Localization.txt("meta>localized_std_text","standard");
+      // html += " | ";
+      // html +=Localization.txt("meta>localized_game_text","game");
      return html;
    },
    eventListeners : [
-     ['#localization_menu','change',Localization.change]
+     ['#localization_menu','change',Localization.change],
+     ['#save_button','click',GameState.save],
+     ['#load_button','click',GameState.load],
    ],
    htmlLocalizationMenu : function() {
      var lg = Localization.supportedLang;
@@ -21,5 +24,10 @@ UI.componentClasses.menu = {
      })
      html += "</select>";
      return html;
+   },
+   htmlSaveButtons : function() {
+     var html = "<button id='save_button'>"+Localization.txt("buttons>save","standard")+"</button>";
+     html += "<button id='load_button'>"+Localization.txt("buttons>load","standard")+"</button>";
+     return html;
    }
- }
+}

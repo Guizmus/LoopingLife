@@ -1,4 +1,5 @@
 window.Localization = {
+  debug : false,
   init : function() {
     Localization.currentLang = Utils.getUrlVars()['lg'];
     if (typeof(Localization.currentLang) == 'undefined')
@@ -26,6 +27,8 @@ window.Localization = {
   },
   libs : {},
   saveLib : function(libName,xmlData) {
+    if (Localization.debug)
+      console.log("Loaded lib "+libName+" : ",xmlData);
     Localization.libs[libName] = xmlData;
   },
   txt : function(path,lib) {
@@ -33,7 +36,7 @@ window.Localization = {
       lib = Utils.gameName;
     var txt = $(Localization.libs[lib]).find(path).html();
     if (typeof(txt)=="undefined") {
-      console.warn("Missing translation in lang '"+ Localization.currentLang + "' for key "+path);
+      console.warn("Missing translation in lang '"+ Localization.currentLang + "' for key "+path+" in lib "+lib);
       txt = "["+path+"]";
     }
     return txt;

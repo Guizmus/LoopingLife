@@ -1,4 +1,7 @@
 <?xml version="1.0"?>
-<meta>
-  <localized_std_text>Texte standard traduit !</localized_std_text>
-</meta>
+<body>
+  <buttons>
+    <save>Sauvegarder</save>
+    <load>Charger</load>
+  </buttons>
+</body>
