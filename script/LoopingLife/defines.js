@@ -10,6 +10,10 @@ window.defines = {
   needs : {
     lifeMater : {
       libel : 'needs>lifeMater',
+      unlock : {
+        lifeStage : 'tutorialPhase',
+        initialValue : 25,
+      },
       mechanic : {
         tutorialPhase : {
           type : 'decay',
@@ -26,6 +30,10 @@ window.defines = {
     },
     enjoyment : {
       libel : 'needs>enjoyment',
+      unlock : {
+        lifeStage : 'tutorialPhase',
+        initialValue : 0,
+      },
       mechanic : {
         tutorialPhase : {
           type : 'tendsTo',
