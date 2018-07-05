@@ -1,5 +1,6 @@
-UI.componentClasses.menu = jQuery.fn.extend(UI.proto,{
+UI.componentClasses.menu = {
    selector : '#menu',
+   xmlKey : 'menu>',
    html : function (index) { // index is the index of the element in the selected list. Used if the selector is multiple
      var html = "";
      if (Main.lang)
@@ -22,8 +23,8 @@ UI.componentClasses.menu = jQuery.fn.extend(UI.proto,{
      return html;
    },
    htmlSaveButtons : function() {
-     var html = "<button id='save_button'>"+Localization.txt("buttons>save","standard")+"</button>";
-     html += "<button id='load_button'>"+Localization.txt("buttons>load","standard")+"</button>";
+     var html = "<button id='save_button'>"+_txt(this.xmlKey+"buttons>save","standard")+"</button>";
+     html += "<button id='load_button'>"+_txt(this.xmlKey+"buttons>load","standard")+"</button>";
      return html;
    }
-});
+};

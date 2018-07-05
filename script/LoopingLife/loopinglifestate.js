@@ -1,4 +1,4 @@
-window.LoopingLifeState = jQuery.fn.extend(GameState.proto,{
+window.LoopingLifeState = {
   generateLifeStageData : function (lifeStageTarget) {
     var data = LoopingLifeState.data;
 
@@ -19,4 +19,11 @@ window.LoopingLifeState = jQuery.fn.extend(GameState.proto,{
 
      LoopingLifeState.data = data;
   },
-});
+  data : {},
+  loadGameState : function (data) {
+    this.data = data;
+  },
+  saveGameState : function () {
+    return this.data;
+  },
+};

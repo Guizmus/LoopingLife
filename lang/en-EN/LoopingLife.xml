@@ -1,5 +1,14 @@
 <?xml version="1.0"?>
 <body>
+  <meta>
+    <title>Looping Life</title>
+  </meta>
+  <menu>
+    <buttons>
+        <save>Save</save>
+        <load>Load</load>
+    </buttons>
+  </menu>
   <lifeStages>
     <tutorialPhase>
       <libel>Baby</libel>

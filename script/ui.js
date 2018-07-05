@@ -4,7 +4,7 @@ window.UI = {
     if (UI.hook.length == 0)
       console.warn("UI init : couldn't find the game div");
     UI.components = [];
-    UI.registerStandardComponents();
+    UI.addStandardComponents();
   },
   hook : null,
   componentClasses : {},
@@ -20,26 +20,29 @@ window.UI = {
   draw : function (components) {
     if (typeof(components) == "undefined")
       components = UI.components;
-    $.each(UI.components,function(x,component) {
-      var componentClass = UI.componentClasses[component]
-      if (componentClass.toDraw) {
-        $(componentClass.selector).html(function(index){return componentClass.html(index)});
-        $(componentClass.eventListeners).each(function(x,listener) {
-          $(listener[0]).on(listener[1],listener[2]);
-        });
+    $.each(components,function(x,component) {
+      if (UI.componentClasses[component].toDraw) {
+        UI.stopListener(component);
+        UI.redrawComponant(component);
+        UI.startListener(component);
         UI.componentClasses[component].toDraw = false;
       }
     });
   },
-  registerStandardComponents : function () {
+  redrawComponant : function (component) {
+    $(UI.componentClasses[component].selector).html(function(index){return UI.componentClasses[component].html(index)});
+  },
+  stopListener : function (component) {
+    $(UI.componentClasses[component].eventListeners).each(function(x,listener) {
+      $(listener[0]).off(listener[1],listener[2]);
+    });
+  },
+  startListener : function(component) {
+    $(UI.componentClasses[component].eventListeners).each(function(x,listener) {
+      $(listener[0]).on(listener[1],listener[2]);
+    });
+  },
+  addStandardComponents : function () {
     UI.addComponent('menu');
   },
-  proto : {
-       selector : null,
-       html : function (index) {
-         console.warn('Element has no html to draw')
-         return '';
-       },
-       eventListeners : [],
-  }
 }
