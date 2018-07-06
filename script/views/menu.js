@@ -1,4 +1,4 @@
-window.View.menu = {
+View.menu = {
    selector : '#menu',
    xmlKey : 'menu>',
    html : function (index) { // index is the index of the element in the selected list. Used if the selector is multiple

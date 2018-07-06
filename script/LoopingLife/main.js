@@ -17,7 +17,7 @@ window.Main = {
     if (GameState.init() === false) // loading the save, calling each saved class laodGameState. If there was no save, we'll generate one
       Main.newSaveFile();
     View.init();
-    setInterval(UI.draw,100);
+    // setInterval(UI.draw,100);
   },
   newSaveFile : function () {
     LoopingLifeState.generateLifeStageData('tutorialPhase');

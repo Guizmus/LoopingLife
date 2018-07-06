@@ -1,4 +1,4 @@
-window.LoopingLifeState = {
+LoopingLifeState = {
   generateLifeStageData : function (lifeStageTarget) {
     var data = LoopingLifeState.data;
 

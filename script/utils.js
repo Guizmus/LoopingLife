@@ -67,5 +67,19 @@ window.Utils = {
           vars[key] = value;
       });
       return vars;
+  },
+  
+  validateMinitalParams : function (params,requirements) {
+    // ckeck the keys of param, and the labels if in debug mode
+    var missingKeys = [];
+    $(requirements).each(function(x,k) {
+      if(typeof(params[k]) == "undefined") 
+        missingKeys.push(k);
+    });
+    if (missingKeys.length>0) {
+      console.error("Using params ",params," with missing keys : ",missingKeys.join(", "));
+      return false;// only hard stop, this is the minimal keys needed.
+    }
+    return true;
   }
 }
