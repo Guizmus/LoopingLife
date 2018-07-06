@@ -35,6 +35,7 @@ window.Utils = {
       }
       script = scripts.shift();
       script = script.replace("GAMEDIR","script/"+Utils.gameName);
+      script = script.replace("VIEWDIR","script/views");
       $.getScript(script, function() {
         Utils.loading.loadScripts(scripts,callback);
       });

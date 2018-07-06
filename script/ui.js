@@ -43,6 +43,6 @@ window.UI = {
     });
   },
   addStandardComponents : function () {
-    UI.addComponent('menu');
+    
   },
 }

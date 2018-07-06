@@ -6,7 +6,9 @@ window.Main = {
       'script/gamemechanics.js',
       'GAMEDIR/defines.js',
       'GAMEDIR/loopinglifestate.js',
-      'GAMEDIR/view.js',
+      
+      'VIEWDIR/view.js',
+      'VIEWDIR/menu.js',
     ],
   },
   lang : true,
@@ -14,7 +16,7 @@ window.Main = {
     UI.init();// UI initialization is needed for compoents to be prepared during save loading
     if (GameState.init() === false) // loading the save, calling each saved class laodGameState. If there was no save, we'll generate one
       Main.newSaveFile();
-    View.prepare();
+    View.init();
     setInterval(UI.draw,100);
   },
   newSaveFile : function () {

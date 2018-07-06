@@ -1,11 +1,11 @@
-UI.componentClasses.menu = {
+window.View.menu = {
    selector : '#menu',
    xmlKey : 'menu>',
    html : function (index) { // index is the index of the element in the selected list. Used if the selector is multiple
      var html = "";
      if (Main.lang)
-        html += UI.componentClasses.menu.htmlLocalizationMenu();
-      html += UI.componentClasses.menu.htmlSaveButtons();
+        html += this.htmlLocalizationMenu();
+      html += this.htmlSaveButtons();
      return html;
    },
    eventListeners : [
