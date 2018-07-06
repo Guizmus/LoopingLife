@@ -1,6 +1,6 @@
-window.GameState = {
+GameState = {
   init : function () {
-    return GameState.parseSavefile() ? GameState.load() : false;
+    return this.parseSavefile() ? this.load() : false;
   },
   parseSavefile : function () { // parse the local storage, and returns if there is an active save loaded.
     if (localStorage.getItem(Utils.gameName) === null) {
@@ -13,7 +13,7 @@ window.GameState = {
   },
   save : function () {
     var saveData = {};
-    $.each(GameState.registeredVars,function(x,className) {
+    $.each(this.registeredVars,function(x,className) {
       saveData[className] = window[className].saveGameState.call(this);
     });
     localStorage.setItem(Utils.gameName,JSON.stringify(saveData));
@@ -27,7 +27,7 @@ window.GameState = {
       if (GameState.registerVar(className))
         window[className].loadGameState.call(this,data);
     });
-    return GameState.registeredVars;
+    return this.registeredVars;
   },
   registeredVars : [],
   registerVar :  function (className) { // every registered var is a class, that needs to have 2 functions : loadGameState and saveGameSate
@@ -41,7 +41,7 @@ window.GameState = {
       $(errors).each(function(x,error){console.log(error)});
       return false;
     }
-    GameState.registeredVars.push(className);
+    this.registeredVars.push(className);
     return true;
   }
 }

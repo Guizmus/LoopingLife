@@ -1,11 +1,4 @@
-UI.componentClasses.infobox = function (params) {
-  
-  if (!Utils.validateMinitalParams(params,['selector']))
-    return false;
-  this.params = params;
-  this.toDraw = true;
-  return this;
-};
+UI.componentClasses.infobox = new UI.componentType(['selector']);
 
 UI.componentClasses.infobox.prototype.html = function () {
   var html = "<div "+

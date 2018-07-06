@@ -1,4 +1,4 @@
-window.Main = {
+Main = {
   dependancies : {
     js : [
       'script/gamestate.js',

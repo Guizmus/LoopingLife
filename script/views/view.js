@@ -1,4 +1,4 @@
-window.View = {
+View = {
   init : function () {
     this.prepareMenu();
     this.prepareStages();

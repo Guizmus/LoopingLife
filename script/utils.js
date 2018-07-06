@@ -1,4 +1,4 @@
-window.Utils = {
+Utils = {
   init : function(gameName) {
     this.gameName = gameName;
     Localization.init();

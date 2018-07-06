@@ -1,4 +1,4 @@
-window.Localization = {
+Localization = {
   // config
   debug : true, // set to true for more console.log
   defaultLang : 'en-EN', //

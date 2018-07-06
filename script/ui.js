@@ -40,7 +40,11 @@ UI = {
     });
   },
   redrawComponant : function (component) {
-    $(component.params.selector).html(function(index){return component.html(index)});
+    $(component.params.selector).html(function(index){
+      var newHtml = component.html(index);
+      if (!(newHtml === false))
+        return newHtml;
+    });
   },
   stopListener : function (component) {
     $(component.params.eventListeners).each(function(x,listener) {
@@ -52,11 +56,19 @@ UI = {
       $(listener[0]).on(listener[1],listener[2]);
     });
   },
-  // addStandardComponents : function () {
-  // 
-  // },
 }
 
-// UI.componentTemplate = function () {
-// 
-// }
+UI.componentType = function (minimalParams) {
+  return (function(_minimalParams) {
+    return function (params) {
+      if (!Utils.validateMinitalParams(params,_minimalParams))
+        return false;
+      this.params = params;
+      this.toDraw = true;
+      return this;
+    }
+  })(minimalParams);
+}
+UI.componentType.prototype.html = function () {
+  return false;
+}
