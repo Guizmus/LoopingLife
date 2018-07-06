@@ -1,20 +1,20 @@
 LoopingLifeState = {
-  generateLifeStageData : function (lifeStageTarget) {
+  generateLifeStageData : function (stageTarget) {
     var data = LoopingLifeState.data;
 
-    data.lifeStage = lifeStageTarget;
+    data.stage = stageTarget;
 
-    data.needs = (typeof(data.needs) == "undefined") ? {} : data.needs;
+    data.resources = (typeof(data.resources) == "undefined") ? {} : data.resources;
 
-    $(Object.keys(defines.needs)).each(function(x,needID) {
-      var needData = defines.needs[needID];
-      if (needData.unlock.lifeStage == lifeStageTarget) {
-        data.needs[needID] = {
-          value : needData.unlock.initialValue,
+    $(Object.keys(defines.resources)).each(function(x,resID) {
+      var resData = defines.resources[resID];
+      if (resData.unlock.stage == stageTarget) {
+        data.resources[resID] = {
+          value : resData.unlock.initialValue,
         }
       }
-      if ((typeof(data.needs[needID]) != "undefined") && (typeof(needData.mechanic[lifeStageTarget]) != "undefined"))
-        data.needs[needID].mechanic = needData.mechanic[lifeStageTarget];
+    //   if ((typeof(data.needs[needID]) != "undefined") && (typeof(needData.mechanic[lifeStageTarget]) != "undefined"))
+    //     data.needs[needID].mechanic = needData.mechanic[lifeStageTarget];
     });
 
      LoopingLifeState.data = data;

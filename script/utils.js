@@ -1,4 +1,5 @@
 Utils = {
+  debug : true,
   init : function(gameName) {
     this.gameName = gameName;
     Localization.init();
@@ -8,12 +9,16 @@ Utils = {
   },
   loading : { // loading logic. Will load motherScript, and then all dependancies mentioned in it. Then, will call motherClass.onDependanciesLoaded
     loadMotherScript : function (motherScript,motherClass) {// motherclass is the name of the class in the motherscript script
+      if (Utils.debug)
+        console.log("Starting load of motherScript",motherScript);
       $.getScript(motherScript,Utils.loading.loadDependancies(motherScript,motherClass));
     },
     dependanciesLoaded : {}, // used to check
     loadDependancies : function (motherScript,motherClass) { // creates the callback function to be used once motherScript is loaded, to initiate the loading of the dependancies
       Utils.loading.dependanciesLoaded[motherClass] = [];
       return function () {
+          if (Utils.debug)
+            console.log("MotherScript loaded, loading dependancies",window[motherClass].dependancies);
           $.each(window[motherClass].dependancies,function(scriptType,scriptList){
             Utils.loading.dependanciesLoaded[motherClass][scriptType] = false;
           });
@@ -45,6 +50,8 @@ Utils = {
     },
     doneLoading : function(loadingCat,motherClass) { // creates the callback that will updates the dependanciesLoaded after loading them
       return function () {
+        if (Utils.debug)
+          console.log("Dependandies loaded",loadingCat);
         Utils.loading.dependanciesLoaded[motherClass][loadingCat] = true;
         Utils.loading.finishLoading(motherClass);
       }
@@ -55,6 +62,8 @@ Utils = {
         done = done && loadState;
       });
       if (done) {
+        if (Utils.debug)
+          console.log("All dependancies loaded, starting localization");
         if (window[motherClass].lang)
           Localization.localizePage();
         typeof(window[motherClass].onDependanciesLoaded) != "undefined" ? window[motherClass].onDependanciesLoaded() : false;

@@ -20,7 +20,7 @@ Main = {
     // setInterval(UI.draw,100);
   },
   newSaveFile : function () {
-    LoopingLifeState.generateLifeStageData('tutorialPhase');
+    LoopingLifeState.generateLifeStageData('stage_1');
     GameState.registerVar("LoopingLifeState");
     GameState.save();
   },

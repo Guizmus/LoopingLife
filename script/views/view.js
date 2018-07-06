@@ -14,10 +14,15 @@ View = {
   },
   prepareResources : function() {
     UI.addComponent('infobox',{
-      id : 'test_infobox',
-      selector : '#test_selector',
+      selector : '#resources',
       style : 'border:1px solid black',
-      html : function () {return "test de contenu"},
+      html : function () {
+        var html = "<ul>";
+        $(Object.keys(LoopingLifeState.data.resources)).each(function(x,resID) {
+          html += "<li>"+_txt('resources>'+resID+'>libel')+" : "+LoopingLifeState.data.resources[resID].value+"</li>";
+        })
+        return html
+      },
     },function(){
     })
   },

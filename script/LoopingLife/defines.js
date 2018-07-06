@@ -1,74 +1,88 @@
 window.defines = {
-  lifeStages : {
-    tutorialPhase : {
-      libel : 'lifeStages>tutorialPhase',
+  stages : {
+    stage_1 : {
+      xmlKey : 'tutorialPhase',
     },
-    learningPhase : {
-      libel : 'lifeStages>learningPhase',
+    stage_2 : {
+      xmlKey : 'learningPhase',
     },
   },
-  needs : {
+  resources : {
     lifeMater : {
-      libel : 'needs>lifeMater',
+      xmlKey : 'lifeMater',
       unlock : {
-        lifeStage : 'tutorialPhase',
+        stage : 'stage_1',
         initialValue : 25,
       },
       mechanic : {
-        tutorialPhase : {
+        stage_1 : {
           type : 'decay',
           rate : 1,
         },
-        learningPhase : {
+        stage_2 : {
           type : 'decay',
           rate : 2,
         },
       },
-      triggerCondition : function(gameState,value) {
-        return value < 0;
-      },
+      triggers : [
+        {
+          condition : function(gameState,value) {
+            return value < 0;
+          },
+          consequence : function(gameState) {
+            
+          }
+        },
+      ],
     },
     enjoyment : {
-      libel : 'needs>enjoyment',
+      xmlKey : 'enjoyment',
       unlock : {
-        lifeStage : 'tutorialPhase',
+        stage : 'stage_1',
         initialValue : 0,
       },
       mechanic : {
-        tutorialPhase : {
+        stage_1 : {
           type : 'tendsTo',
           method : 'percent',
           rate : 0.01,
           goal : 0
         },
-        learningPhase : {
+        stage_2 : {
           type : 'tendsTo',
           method : 'percent',
           rate : 0.05,
           goal : 0
         },
       },
-      triggerCondition : function(gameState,value) {
-        return false;
-      },
+      triggers : [
+        {
+          condition : function(gameState,value) {
+            return false;
+          },
+          consequence : function(gameState) {
+            
+          }
+        },
+      ],
     },
   },
   statistics : {
     stamina : {
-      libel : 'statistics>stamina',
+      xmlKey : 'stamina',
     },
     imagination : {
-      libel : 'statistics>imagination',
+      xmlKey : 'imagination',
     },
     charisma : {
-      libel : 'statistics>charisma',
+      xmlKey : 'charisma',
     }
   },
   actions : {
-    changeLifeStage : {
-      tutorialPhase : {
-        libel : 'actions>tutorialPhase>changeLifeStage',
-        needs : {
+    changeStage : {
+      xmlKey : 'changeStage',
+      stage_1 : {
+        currencies : {
           lifeMater : 100,
           enjoyment : 20,
         },
@@ -78,16 +92,16 @@ window.defines = {
         },
         reward : function(gameState) {
           return {
-            type : 'progressPhase',
-            step : 'learningPhase',
+            type : 'progressStage',
+            step : 'stage_2',
           };
         },
       },
     },
     crying : {
-      tutorialPhase : {
-        libel : 'actions>tutorialPhase>crying',
-        needs : {
+      xmlKey : 'crying',
+      stage_1 : {
+        currencies : {
           lifeMater : 10,
         },
         duration : 10,
@@ -97,17 +111,17 @@ window.defines = {
         },
         reward : function(gameState) {
           return {
-            type : 'earnNeed',
-            need : 'enjoyment',
+            type : 'earnCurrency',
+            currency : 'enjoyment',
             value : -10,
           };
         },
       },
     },
     playing : {
-      tutorialPhase : {
-        libel : 'actions>tutorialPhase>playing',
-        needs : {
+      xmlKey : 'playing',
+      stage_1 : {
+        currencies : {
           lifeMater : 10,
         },
         duration : 10,
@@ -117,7 +131,7 @@ window.defines = {
         },
         reward : function(gameState) {
           return {
-            type : 'earnNeed',
+            type : 'earnCurrency',
             need : 'enjoyment',
             value : 10,
           };
@@ -125,24 +139,23 @@ window.defines = {
       },
     },
     resting : {
-      tutorialPhase : {
-        libel : 'actions>tutorialPhase>resting',
-        needs : {},
+      xmlKey : 'resting',
+      stage_1 : {
+        currencies : {},
         duration : 5,
         statistics : {
           stamina : 1,
         },
         reward : function(gameState) {
           return {
-            type : 'earnNeed',
+            type : 'earnCurrency',
             need : 'lifeMater',
             value : 20,
           };
         },
       },
-      learningPhase : {
-        libel : 'actions>learningPhase>resting',
-        needs : {},
+      stage_2 : {
+        currencies : {},
         duration : 20,
         statistics : {
           stamina : 0.9,
@@ -150,7 +163,7 @@ window.defines = {
         },
         reward : function(gameState) {
           return {
-            type : 'earnNeed',
+            type : 'earnCurrency',
             need : 'lifeMater',
             value : 15,
           };

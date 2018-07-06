@@ -9,14 +9,14 @@
         <load>Load</load>
     </buttons>
   </menu>
-  <gameStages>
+  <stages>
     <stage_1>
       <libel>Baby</libel>
     </stage_1>
     <stage_2>
       <libel>Child</libel>
     </stage_2>
-  </lifeStages>
+  </stages>
   <resources>
     <lifeMater>
       <libel>Life Essence</libel>

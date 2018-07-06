@@ -53,7 +53,7 @@ Localization = {
   // ====== PRIVATE ======
   saveLib : function(xmlData) {
     if (Localization.debug)
-      console.log("Loaded lib",xmlData);
+      console.log("Loaded lang ",Localization.currentLang,xmlData);
     Localization.lib = xmlData;
   },
   change : function () { // function triggered by the localization menu

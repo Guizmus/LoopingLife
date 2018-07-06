@@ -9,22 +9,22 @@
       <load>Charger</load>
     </buttons>
   </menu>
-  <lifeStages>
-    <tutorialPhase>
       <libel>Nourisson</libel>
-    </tutorialPhase>
-    <learningPhase>
       <libel>Enfant</libel>
-    </learningPhase>
-  </lifeStages>
-  <needs>
+  <stages>
+    <stage_1>
+    </stage_1>
+    <stage_2>
+    </stage_2>
+  </stages>
+  <resources>
     <lifeMater>
       <libel>Essence vitale</libel>
     </lifeMater>
     <enjoyment>
       <libel>Joie</libel>
     </enjoyment>
-  </needs>
+  </resources>
   <statistics>
     <stamina>
       <libel>Endurance</libel>
@@ -37,7 +37,7 @@
     </charisma>
   </statistics>
   <actions>
-    <tutorialPhase>
+    <stage_1>
       <changeLifeStage>
         <libel>Grandir</libel>
       </changeLifeStage>
@@ -50,11 +50,11 @@
       <resting>
         <libel>Dormir</libel>
       </resting>
-    </tutorialPhase>
-    <learningPhase>
+    </stage_1>
+    <stage_2>
       <resting>
         <libel>Dormir</libel>
       </resting>
-    </learningPhase>
+    </stage_2>
   </actions>
 </body>

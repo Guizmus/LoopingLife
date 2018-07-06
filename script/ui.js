@@ -10,7 +10,6 @@ UI = {
   componentClasses : {},
   components : [],
   addComponent : function(component,params,callback) {
-    console.log(typeof(this.componentClasses[component]));
     if (typeof(this.componentClasses[component]) == "undefined") {
       Utils.loading.loadScripts("script/UIComponent/"+component+".js",function(){
         UI.instanceComponent(component,params);
