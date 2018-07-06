@@ -62,7 +62,17 @@ Localization = {
     window.location.href=window.location.origin+window.location.pathname+'?'+$.param(vars);
   },
   loadXML : function(libName,callback) {
-      $.get('lang/'+Localization.currentLang+'/'+libName+'.xml',null,callback,'xml');
+    var fileName = 'lang/'+Localization.currentLang+'/'+libName+'.xml';
+    $.ajax( {
+      type: "GET",
+      url: fileName,
+      dataType: "xml",
+      success:callback,
+      error : function(ev,errType) {
+        console.error("Error while loading the XML",fileName," : ",errType);
+      }
+    });            
+      // $.get('lang/'+Localization.currentLang+'/'+libName+'.xml',null,callback,'xml');
   },
   getUrlVars : function() {
       var vars = {};
