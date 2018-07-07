@@ -8,7 +8,6 @@ Main = {
       'GAMEDIR/loopinglifestate.js',
       
       'VIEWDIR/view.js',
-      'VIEWDIR/menu.js',
     ],
   },
   lang : true,
