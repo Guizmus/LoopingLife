@@ -8,11 +8,11 @@ UI = {
   },
   hook : null,
   componentClasses : {},
-  components : [],
-  addComponent : function(component,params,callback) {
+  components : {},
+  addComponent : function(component,componentID,params,callback) {
     if (typeof(this.componentClasses[component]) == "undefined") {
       Utils.loading.loadScripts("script/UIComponent/"+component+".js",function(){
-        UI.instanceComponent(component,params);
+        UI.instanceComponent(component,componentID,params);
         if (typeof(callback) == "function")
           callback.call(this);
       });
@@ -22,21 +22,32 @@ UI = {
           callback.call(this);
     }
   },
-  instanceComponent : function (component,params) {
-      this.components.push(new this.componentClasses[component](params));
-      UI.draw()
+  instanceComponent : function (component,componentID,params) {
+      this.components[componentID] = new this.componentClasses[component](params);
+      UI.draw();
   },
-  draw : function (components) {
+  draw : function (components,argv) {
     if (typeof(components) == "undefined")
       components = UI.components;
     $.each(components,function(x,component) {
       if (component.toDraw) {
-        UI.stopListener(component);
-        UI.redrawComponant(component);
-        UI.startListener(component);
+        if (typeof(component.update) == "undefined") {
+          UI.stopListener(component);
+          UI.redrawComponant(component);
+          UI.startListener(component);
+        } else component.update.call(component,typeof(argv) == "undefined" ? undefined : argv[x]);
         component.toDraw = false;
       }
     });
+  },
+  redraw : function () {
+    $.each(UI.components,function(x,component) {
+      if (typeof(component.update) == "undefined") {
+        UI.stopListener(component);
+        UI.redrawComponant(component);
+        UI.startListener(component);
+      } else component.update.call(component);
+    })
   },
   redrawComponant : function (component) {
     $(component.params.selector).html(function(index){

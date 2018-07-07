@@ -17,12 +17,13 @@ Utils = {
     loadDependancies : function (motherScript,motherClass) { // creates the callback function to be used once motherScript is loaded, to initiate the loading of the dependancies
       Utils.loading.dependanciesLoaded[motherClass] = [];
       return function () {
+          window.game = new Main();
           if (Utils.debug)
-            console.log("MotherScript loaded, loading dependancies",window[motherClass].dependancies);
-          $.each(window[motherClass].dependancies,function(scriptType,scriptList){
+            console.log("MotherScript loaded, loading dependancies",game.dependancies);
+          $.each(game.dependancies,function(scriptType,scriptList){
             Utils.loading.dependanciesLoaded[motherClass][scriptType] = false;
           });
-          $.each(window[motherClass].dependancies,function(scriptType,scriptList){
+          $.each(game.dependancies,function(scriptType,scriptList){
             switch (scriptType) {
               case 'js' :
                 Utils.loading.loadScripts(scriptList,Utils.loading.doneLoading(scriptType,motherClass));
@@ -64,9 +65,9 @@ Utils = {
       if (done) {
         if (Utils.debug)
           console.log("All dependancies loaded, starting localization");
-        if (window[motherClass].lang)
+        if (game.lang)
           Localization.localizePage();
-        typeof(window[motherClass].onDependanciesLoaded) != "undefined" ? window[motherClass].onDependanciesLoaded() : false;
+        typeof(game.onDependanciesLoaded) != "undefined" ? game.onDependanciesLoaded() : false;
       }
     },
   },

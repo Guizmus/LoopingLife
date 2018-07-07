@@ -8,12 +8,12 @@ View = {
   },
   
   buildMenu : function () {
-    UI.addComponent('infobox',{
+    UI.addComponent('infobox','menu',{
       selector : '#menu',
       xmlKey : 'menu',
       html : function () {
         var html = "";
-        if (Main.lang)
+        if (game.lang)
            html += this.htmlLocalizationMenu();
          html += this.htmlSaveButtons();
         return html;
@@ -45,22 +45,42 @@ View = {
   },
   
   buildResources : function() {
-    UI.addComponent('infobox',{
+    UI.addComponent('infobox','Resources',{
       selector : '#resources',
       style : 'border:1px solid black',
       html : function () {
+        var that = this;
         var html = "<ul>";
-        $(Object.keys(LoopingLifeState.data.resources)).each(function(x,resID) {
-          html += "<li>"+_txt('resources>'+resID+'>libel')+" : <span id='resourceCount_"+resID+"'>"+LoopingLifeState.data.resources[resID].value+"</span></li>";
+        $(Object.keys(GameState.vars.LoopingLifeState.data.resources)).each(function(x,resID) {
+          html += "<li>"+_txt('resources>'+resID+'>libel')+" : <span id='resourceCount_"+resID+"'>"+that.innerHtml(resID)+"</span></li>";
         })
         return html
+      },
+      innerHtml : function(resID) {
+        return GameState.vars.LoopingLifeState.data.resources[resID].getValue();
+      },
+      updateValue : function (resID) {
+        $("#resourceCount_"+resID).html(this.innerHtml(resID))
       },
     },function(){
     })
   },
   
   buildActions : function () {
-    
+    UI.addComponent('infobox','Actions',{
+      selector : '#test_actions',
+      html : function () {
+        var html = "<button id='add_resource'>Add resource</button>";
+        return html
+      },
+      eventListeners : [
+        ['#add_resource','click',test],
+      ],
+      redraw : function (resID,value) {
+        console.log("redrawing")
+        UI.components.Resources.updateValue(resID,value);
+      }
+    })
   },
   
 }
