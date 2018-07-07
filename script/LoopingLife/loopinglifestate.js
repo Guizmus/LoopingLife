@@ -1,16 +1,29 @@
 function LoopingLifeState () {
+  var debug = false;
   this.data = {};
   var that = this;
   this.generateStageData = function (stageTarget) {
 
-    this.data.stage = stageTarget;
-
-    this.data.resources = (typeof(this.data.resources) == "undefined") ? {} : this.data.resources;
+    this.data.stage = typeof(stageTarget) == "undefined" ? this.data.stage : stageTarget;
+    stageTarget = this.data.stage;
     
+    this.data.resources = (typeof(this.data.resources) == "undefined") ? {} : this.data.resources;
     $(Object.keys(defines.resources)).each(function(x,resID) {
+      if(typeof(that.data.resources[resID]) != "undefined")
+        return true;
       var resData = defines.resources[resID];
       if (resData.unlock.stage == stageTarget) {
         that.data.resources[resID] = new Resource(resID,resData);
+      }
+    });
+    
+    this.data.actions = (typeof(this.data.actions) == "undefined") ? {} : this.data.actions;
+    $(Object.keys(defines.actions)).each(function(x,actID) {
+      var actData = defines.actions[actID];
+      if(typeof(actData) != "undefined")
+        return true;
+      if (typeof(actData[stageTarget]) != "undefined") {
+        that.data.actions[actID] = GameState.vars.Actions.new(actID,actData[stageTarget]);
       }
     });
   };

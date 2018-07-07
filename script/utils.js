@@ -1,5 +1,5 @@
 Utils = {
-  debug : true,
+  debug : false,
   init : function(gameName) {
     this.gameName = gameName;
     Localization.init();

@@ -1,6 +1,6 @@
 Localization = {
   // config
-  debug : true, // set to true for more console.log
+  debug : false, // set to true for more console.log
   defaultLang : 'en-EN', //
   supportedLang : {
     'en-EN' : 'English',
