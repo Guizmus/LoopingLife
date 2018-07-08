@@ -14,6 +14,8 @@ UI.componentClasses.progressbox.prototype.html = function () {
       " / "+
       "<span class='maxValue'>"+this.params.progressObject.progressMaxValue()+"</span></div>";
   
+    html +=  "<div class='queueButton'>"+_txt("actions>buttons>queue")+"</div>";
+    
   html += "</div>";
   return html;
 }

@@ -9,12 +9,12 @@
       <load>Charger</load>
     </buttons>
   </menu>
-      <libel>Nourisson</libel>
-      <libel>Enfant</libel>
   <stages>
     <stage_1>
+        <libel>Nourisson</libel>
     </stage_1>
     <stage_2>
+        <libel>Enfant</libel>
     </stage_2>
   </stages>
   <resources>
@@ -37,10 +37,13 @@
     </charisma>
   </statistics>
   <actions>
+    <buttons>
+      <queue>Ajouter à la liste</queue>
+    </buttons>
     <stage_1>
       <changeStage>
         <libel>Grandir</libel>
-        <info>Il est temps de passer de 4 à 2 appuis</info>
+        <info>Il est temps de passer de 4 à 2 pattes</info>
       </changeStage>
       <crying>
         <libel>Pleurer</libel>

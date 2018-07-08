@@ -17,7 +17,7 @@ function Actions () {
       return 100;
     }
     this.eventListeners = [
-      ['','click',function(){GameState.vars.Actions.queue(actID)}],
+      ['.queueButton','click',function(){GameState.vars.Actions.queue(actID)}],
     ];
     this.saveGameState = function () {
       return {

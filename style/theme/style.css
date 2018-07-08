@@ -31,7 +31,18 @@
     width : 100%;
     top : 10px;
 }
-
+#LoopingLife #actions .progressbox .queueButton {
+    display : block;
+    width : 100%;
+    height : 16px;
+    position: absolute;
+    bottom : 0px;
+    border-top : 1px solid black;
+    cursor : pointer;
+}
+#LoopingLife #actions .progressbox .queueButton:hover {
+  background-color : #b3d7ff;
+}
 .info {
   position : absolute;
   cursor : help;

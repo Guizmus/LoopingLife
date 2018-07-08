@@ -37,6 +37,9 @@
     </charisma>
   </statistics>
   <actions>
+    <buttons>
+      <queue>Queue to the list</queue>
+    </buttons>
     <stage_1>
       <changeStage>
         <libel>Grow up</libel>
