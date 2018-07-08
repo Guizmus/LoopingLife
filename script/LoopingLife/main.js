@@ -35,4 +35,7 @@ function Main () {
     GameState.vars.LoopingLifeState.generateStageData('stage_1');
     // GameState.save();
   };
+  this.updateSaveFile = function(from,to,saveData) {
+    return saveData;
+  }
 }

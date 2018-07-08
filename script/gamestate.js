@@ -47,8 +47,9 @@ GameState = {
     }
     if (saveData.version != game.version) {
       if (GameState.debug)
-        console.log("Upgrading save version from",saveData.version,"to",game.version)
-      saveData = GameState.upgradeSaveVersion(saveData);
+        console.log("Upgrading save version from",saveData.version,"to",game.version);
+      if (typeof(game.updateSaveFile) == "function")
+        saveData = game.updateSaveFile(saveData.version,game.version,saveData);
     }
     if (GameState.debug)
       console.log("registering vars",saveData)
@@ -90,8 +91,5 @@ GameState = {
     }
     GameState.vars[typeof(className) =="function" ? className.name : className] = newClass;
     return true;
-  },
-  upgradeSaveVersion : function (saveData) {
-    return saveData;
   }
 }
