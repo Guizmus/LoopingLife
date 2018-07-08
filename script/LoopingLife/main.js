@@ -11,6 +11,8 @@ function Main () {
       'GAMEDIR/actions.js',
       'GAMEDIR/resources.js',
       
+      'COMPONENT/infobox.js',
+      
       'VIEWDIR/view.js',
     ],
   };

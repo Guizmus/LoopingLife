@@ -47,7 +47,9 @@ function Actions () {
       }
   }
   function getConfig (actID) {
-    return defines.actions[actID][GameState.vars.LoopingLifeState.data.stage];
+    var config = defines.actions[actID][GameState.vars.LoopingLifeState.data.stage];
+    config.xmlKey = defines.actions[actID].xmlKey;
+    return config;
   }
   this.get = function(actID) {
     if (typeof(actID) == "undefined")

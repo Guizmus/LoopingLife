@@ -14,6 +14,7 @@ Utils = {
       $.getScript(motherScript,Utils.loading.loadDependancies(motherScript,motherClass));
     },
     dependanciesLoaded : {}, // used to check
+    scriptsLoaded : [],
     loadDependancies : function (motherScript,motherClass) { // creates the callback function to be used once motherScript is loaded, to initiate the loading of the dependancies
       Utils.loading.dependanciesLoaded[motherClass] = [];
       return function () {
@@ -34,15 +35,26 @@ Utils = {
       }
     },
     loadScripts : function(scripts,callback) { // handling sequential loading for js scripts
-      if (typeof(scripts) == "string")
+      if (typeof(scripts) == "string") {
+        var alreadyLoaded = false;
+        $(Utils.loading.scriptsLoaded).each(function(x,script) {
+          if (script == scripts)
+            alreadyLoaded = true;
+        })
+        if (alreadyLoaded) {
+          return callback.call(this);
+        }
         scripts = [scripts];
+      }
       if (scripts.length == 0) {
         return callback.call(this);
       }
       script = scripts.shift();
       script = script.replace("GAMEDIR","script/"+Utils.gameName);
       script = script.replace("VIEWDIR","script/views");
+      script = script.replace("COMPONENT","script/UIComponent");
       $.getScript(script, function() {
+        Utils.loading.scriptsLoaded.push(script);
         Utils.loading.loadScripts(scripts,callback);
       });
     },

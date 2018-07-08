@@ -17,13 +17,18 @@ UI = {
           callback.call(this);
       });
     } else {
-        this.instanceComponent(params);
+        this.instanceComponent(component,componentID,params);
         if (typeof(callback) == "function")
           callback.call(this);
     }
   },
   instanceComponent : function (component,componentID,params) {
-      this.components[componentID] = new this.componentClasses[component](params);
+      if (typeof(this.components[componentID]) != "undefined") {
+        console.error("Instanciating a new UI element with an ID already taken",componentID)
+      }
+      var newComponent = new this.componentClasses[component](params);
+      newComponent.componentID = componentID;
+      this.components[componentID] = newComponent;
       UI.draw();
   },
   draw : function (components,argv) {
