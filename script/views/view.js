@@ -4,6 +4,7 @@ View = {
     this.buildStages();
     this.buildResources();
     this.buildActions();
+    this.buildActionList();
     UI.draw();
   },
   
@@ -47,7 +48,8 @@ View = {
   buildResources : function() {
     UI.addComponent('infobox','Resources',{
       selector : '#resources',
-      style : 'border:1px solid black',
+      style : 'border:1px solid black;display:block;width:200px;position:relative;',
+      title : _txt('resources>title'),
       html : function () {
         var that = this;
         var html = "<ul>";
@@ -68,22 +70,30 @@ View = {
   
   buildActions : function () {
     $(Object.keys(GameState.vars.Actions.get())).each(function(x,actID) {
-      UI.addComponent('progressbox','action_'+actID,{
+      UI.addComponent('progressbox','Action_'+actID,{
         parentSelector : '#actions',
         progressObject : GameState.vars.Actions.get(actID),
         eventListeners : GameState.vars.Actions.get(actID).eventListeners,
       })
     })
-    UI.addComponent('infobox','Actions',{
-      selector : '#test_actions',
-      html : function () {
-        var html = "<button id='add_resource'>Add resource</button>";
-        return html
-      },
-      eventListeners : [
-        ['#add_resource','click',test],
-      ],
-    })
+    // UI.addComponent('infobox','ActionList',{
+    //   selector : '#actionList',
+    //   html : function () {
+    //     var html = "<button id='add_resource'>Add resource</button>";
+    //     return html
+    //   },
+    //   eventListeners : [
+    //     ['#add_resource','click',test],
+    //   ],
+    // })
+  },
+  
+  buildActionList : function () {
+      UI.addComponent('list','actionList',{
+        selector : '#actionList',
+        list : GameState.vars.ActionList,
+        title : _txt('actions>titles>actionList'),
+      })
   },
   
 }

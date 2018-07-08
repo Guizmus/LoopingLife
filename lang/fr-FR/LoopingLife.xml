@@ -18,6 +18,8 @@
     </stage_2>
   </stages>
   <resources>
+    <title>Ressources</title>
+    <titleInfo>Ressources actuelles. Attention, certaines limites une fois atteintes ne peuvent être oubliées...</titleInfo>
     <lifeMater>
       <libel>Essence vitale</libel>
     </lifeMater>
@@ -40,6 +42,10 @@
     <buttons>
       <queue>Ajouter à la liste</queue>
     </buttons>
+    <titles>
+      <actionList>Tâches à effectuer</actionList>
+      <actionListInfo>La liste des choses à faire. Préparez la suite, ou bien planifiez les prochaines boucles ici.</actionListInfo>
+    </titles>
     <stage_1>
       <changeStage>
         <libel>Grandir</libel>

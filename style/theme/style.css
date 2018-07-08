@@ -10,6 +10,9 @@
 #LoopingLife #actions{
   margin-top : 30px;
 }
+#LoopingLife #actionList{
+  width : 200px;
+}
 #LoopingLife #actions .progressbox {
   border : 1px solid black;
   width : 200px;
@@ -43,13 +46,26 @@
 #LoopingLife #actions .progressbox .queueButton:hover {
   background-color : #b3d7ff;
 }
-.info {
+#LoopingLife .list {
+  border : 1px solid black;
+}
+#LoopingLife .list li {
+  border-bottom : 1px solid black;
+  padding : 2px;
+}
+#LoopingLife .title {
+    display : inline-block;
+    width : 100%;
+    height : 16px;
+    border-bottom : 1px solid black;
+    text-align: center;
+}
+#LoopingLife .info {
   position : absolute;
   cursor : help;
 }
-.info .infoContent {
+#LoopingLife .info .infoContent {
   display : none;
-  /* display : block; */
   position : relative;
   width : 200px;
   margin-top : 10px;

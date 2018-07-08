@@ -18,6 +18,8 @@
     </stage_2>
   </stages>
   <resources>
+    <title>Resources</title>
+    <titleInfo>Resources currently owned. Be careful, once you go over your limit, you may never be the same...</titleInfo>
     <lifeMater>
       <libel>Life Essence</libel>
     </lifeMater>
@@ -40,6 +42,10 @@
     <buttons>
       <queue>Queue to the list</queue>
     </buttons>
+    <titles>
+      <actionList>TODO List</actionList>
+      <actionListInfo>Task that need to be done. Prepare for what is to come, or describe your next loops here.</actionListInfo>
+    </titles>
     <stage_1>
       <changeStage>
         <libel>Grow up</libel>

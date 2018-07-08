@@ -86,10 +86,16 @@ UI.componentType = function (minimalParams) {
         return false;
       this.params = params;
       this.toDraw = true;
-      return this;
+      
+      this.getTitle = function () {
+        var html = "";
+        if (typeof(this.params.title) != "undefined") {
+          html += "<span class='title'>"+
+            this.params.title+
+             "</span>";
+        }
+        return html;
+      }
     }
   })(minimalParams);
-}
-UI.componentType.prototype.html = function () {
-  return false;
 }

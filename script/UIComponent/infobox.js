@@ -7,6 +7,8 @@ UI.componentClasses.infobox.prototype.html = function () {
     (typeof(this.params.id) != "undefined" ? "id='"+this.params.id+"' " : "")+
     (typeof(this.params.style) != "undefined" ? "style='"+this.params.style+"' " : "")+
     ">";
+    
+  html += this.getTitle();
   
   if (typeof(this.params.html) == "function")
     html += this.params.html();
