@@ -17,12 +17,7 @@ function LoopingLifeState () {
     });
     
     $(Object.keys(defines.actions)).each(function(x,actID) {
-      var actConfig = defines.actions[actID];
-      if(typeof(actConfig) == "undefined")
-        return true;
-      if ((typeof(actConfig[stageTarget]) != "undefined") && (typeof(GameState.vars.Actions.get(actID)) == "undefined")){
-        GameState.vars.Actions.new(actID,actConfig[stageTarget]);
-      }
+      GameState.vars.Actions.new(actID);
     });
   };
   

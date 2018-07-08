@@ -1,5 +1,5 @@
 GameState = {
-  debug : true,
+  debug : false,
   vars : {},
   init : function () {
     return this.parseSavefile() ? this.loadData() : false;

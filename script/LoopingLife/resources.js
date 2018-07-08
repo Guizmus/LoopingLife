@@ -1,10 +1,10 @@
 function Resources () {
-  var debug = true;
+  var debug = false;
   var data = {};
   var that = this;
   
   function Resource (resID,resConfig,resData) {
-    var debug = true;
+    var debug = false;
     var that = this;
     this.resID = resID;
     
@@ -13,6 +13,9 @@ function Resources () {
     
     var value =  (typeof(resConfig) == "number") ? resConfig : resConfig.unlock.initialValue;
     
+    this.txt = function (libelType) {
+      return _txt("resources>"+resConfig.xmlKey+">"+libelType);
+    }
     this.getValue = function () {
       return value;
     }
@@ -27,7 +30,8 @@ function Resources () {
     }
     
     this.loadGameState = function (d) {
-      console.log("loading resource values",that.resID,d)
+      if (debug)
+        console.log("loading resource values",that.resID,d)
       if (typeof(d.resID) != "undefined")
         that.resID = d.resID;
       if (typeof(d.value) != "undefined")
@@ -71,10 +75,11 @@ function Resources () {
   }
   this.saveGameState = function () {
     var savedData = {};
-    console.log(data)
     $(Object.keys(data)).each(function(x,actID) {
       savedData[actID] = data[actID].saveGameState();
     })
+    if (debug)
+      console.log("saving resource data",savedData)
     return savedData;
   }
 }

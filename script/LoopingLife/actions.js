@@ -1,12 +1,14 @@
 function Actions () {
-  var debug = true;
+  var debug = false;
   var data = {};
   var that = this;
   
   function Action (actID,actConfig,actData) {
     
     
-    
+    this.txt = function (libelType) {
+      return _txt("actions>"+GameState.vars.LoopingLifeState.data.stage+">"+actConfig.xmlKey+">"+libelType);
+    }
     
     this.saveGameState = function () {
       return {
@@ -44,25 +46,29 @@ function Actions () {
         this.loadGameState(actData);
       }
   }
-  
+  function getConfig (actID) {
+    return defines.actions[actID][GameState.vars.LoopingLifeState.data.stage];
+  }
   this.get = function(actID) {
+    if (typeof(actID) == "undefined")
+      return data;
     return data[actID];
   }
-  this.new = function(actID,actConfig,actData) {
+  this.new = function(actID,actData) {
     if (typeof(data[actID]) != "undefined")
       return false;
+    var actConfig = getConfig(actID);
     if (debug)
       console.log("new action",actID,actConfig,actData)
-    data[actID] = new Action(actID,actData,actData);
+    data[actID] = new Action(actID,actConfig,actData);
     return data[actID]
   }
   this.loadGameState = function (d) {
     if (debug)
       console.log("loading action data",d)
     $(Object.keys(d)).each(function(x,actID) {
-      var actConfig = defines.actions[actID][GameState.vars.LoopingLifeState.data.stage];
       var actData = d[actID];
-      that.new(actID,actConfig,actData)
+      that.new(actID,actData)
     })
     // that.data.actions[actID] = GameState.vars.Actions.new(actID,actData[stageTarget]);
     // data = d;

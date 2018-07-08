@@ -52,7 +52,7 @@ View = {
         var that = this;
         var html = "<ul>";
         $(Object.keys(GameState.vars.Resources.get())).each(function(x,resID) {
-          html += "<li>"+_txt('resources>'+resID+'>libel')+" : <span id='resourceCount_"+resID+"'>"+that.innerHtml(resID)+"</span></li>";
+          html += "<li>"+GameState.vars.Resources.get(resID).txt('libel')+" : <span id='resourceCount_"+resID+"'>"+that.innerHtml(resID)+"</span></li>";
         })
         return html
       },
