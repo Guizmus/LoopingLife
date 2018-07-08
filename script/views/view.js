@@ -67,6 +67,12 @@ View = {
   },
   
   buildActions : function () {
+    $(Object.keys(GameState.vars.Actions.get())).each(function(x,actID) {
+      UI.addComponent('progressbox','action_'+actID,{
+        parentSelector : '#actions',
+        progressObject : GameState.vars.Actions.get(actID)
+      })
+    })
     UI.addComponent('infobox','Actions',{
       selector : '#test_actions',
       html : function () {
@@ -76,10 +82,6 @@ View = {
       eventListeners : [
         ['#add_resource','click',test],
       ],
-      redraw : function (resID,value) {
-        console.log("redrawing")
-        UI.components.Resources.updateValue(resID,value);
-      }
     })
   },
   

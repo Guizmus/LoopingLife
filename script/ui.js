@@ -29,18 +29,18 @@ UI = {
       var newComponent = new this.componentClasses[component](params);
       newComponent.componentID = componentID;
       this.components[componentID] = newComponent;
-      UI.draw();
+      UI.draw(newComponent);
   },
   draw : function (components,argv) {
     if (typeof(components) == "undefined")
       components = UI.components;
     $.each(components,function(x,component) {
       if (component.toDraw) {
-        if (typeof(component.update) == "undefined") {
+        // if (typeof(component.update) == "undefined") {
           UI.stopListener(component);
           UI.redrawComponant(component);
           UI.startListener(component);
-        } else component.update.call(component,typeof(argv) == "undefined" ? undefined : argv[x]);
+        // } else component.update.call(component,typeof(argv) == "undefined" ? undefined : argv[x]);
         component.toDraw = false;
       }
     });
@@ -55,11 +55,17 @@ UI = {
     })
   },
   redrawComponant : function (component) {
-    $(component.params.selector).html(function(index){
-      var newHtml = component.html(index);
-      if (!(newHtml === false))
-        return newHtml;
-    });
+    if(typeof(component.params.selector) != "undefined")
+      $(component.params.selector).html(function(index){
+        var newHtml = component.html(index);
+        if (!(newHtml === false))
+          return newHtml;
+      });
+    if(typeof(component.params.parentSelector) != "undefined") {
+        var newHtml = component.html();
+        if (!(newHtml === false))
+          $(component.params.parentSelector).append(newHtml);
+    }
   },
   stopListener : function (component) {
     $(component.params.eventListeners).each(function(x,listener) {

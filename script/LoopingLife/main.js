@@ -12,6 +12,7 @@ function Main () {
       'GAMEDIR/resources.js',
       
       'COMPONENT/infobox.js',
+      'COMPONENT/progressbox.js',
       
       'VIEWDIR/view.js',
     ],

@@ -10,6 +10,13 @@ function Actions () {
       return _txt("actions>"+GameState.vars.LoopingLifeState.data.stage+">"+actConfig.xmlKey+">"+libelType);
     }
     
+    this.progressValue = function () {
+      return 0;
+    }
+    this.progressMaxValue = function () {
+      return 100;
+    }
+    
     this.saveGameState = function () {
       return {
         actID : this.actID,
@@ -21,9 +28,7 @@ function Actions () {
         that.actID = d.actID;
         
     }
-      // changeStage : {
-      //   xmlKey : 'changeStage',
-      //   stage_1 : {
+      //     xmlKey : 'changeStage',
       //     currencies : {
       //       lifeMater : 100,
       //       enjoyment : 20,
@@ -38,8 +43,6 @@ function Actions () {
       //         step : 'stage_2',
       //       };
       //     },
-      //   },
-      // },
       this.actID = actID;
       
       if(typeof(actData) != "undefined") {

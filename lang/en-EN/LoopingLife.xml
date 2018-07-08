@@ -38,9 +38,9 @@
   </statistics>
   <actions>
     <stage_1>
-      <changeLifeStage>
+      <changeStage>
         <libel>Grow up</libel>
-      </changeLifeStage>
+      </changeStage>
       <crying>
         <libel>Cry</libel>
       </crying>

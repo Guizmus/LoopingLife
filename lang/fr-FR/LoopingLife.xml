@@ -38,9 +38,9 @@
   </statistics>
   <actions>
     <stage_1>
-      <changeLifeStage>
+      <changeStage>
         <libel>Grandir</libel>
-      </changeLifeStage>
+      </changeStage>
       <crying>
         <libel>Pleurer</libel>
       </crying>
