@@ -70,7 +70,8 @@ View = {
     $(Object.keys(GameState.vars.Actions.get())).each(function(x,actID) {
       UI.addComponent('progressbox','action_'+actID,{
         parentSelector : '#actions',
-        progressObject : GameState.vars.Actions.get(actID)
+        progressObject : GameState.vars.Actions.get(actID),
+        eventListeners : GameState.vars.Actions.get(actID).eventListeners,
       })
     })
     UI.addComponent('infobox','Actions',{

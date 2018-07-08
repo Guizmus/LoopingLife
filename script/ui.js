@@ -69,12 +69,12 @@ UI = {
   },
   stopListener : function (component) {
     $(component.params.eventListeners).each(function(x,listener) {
-      $(listener[0]).off(listener[1],listener[2]);
+      $(component.selector()+" "+listener[0]).off(listener[1],listener[2]);
     });
   },
   startListener : function(component) {
     $(component.params.eventListeners).each(function(x,listener) {
-      $(listener[0]).on(listener[1],listener[2]);
+      $(component.selector()+" "+listener[0]).on(listener[1],listener[2]);
     });
   },
 }

@@ -14,3 +14,6 @@ UI.componentClasses.infobox.prototype.html = function () {
   html += "</div>";
   return html;
 }
+UI.componentClasses.infobox.prototype.selector = function () {
+    return this.params.selector;
+}

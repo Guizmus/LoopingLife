@@ -4,7 +4,7 @@ UI.componentClasses.progressbox.prototype.html = function () {
   
   var html = "<div class='progressbox"+
     (typeof(this.params.class) != "undefined" ? " "+this.params.class : "")+"'"+
-    "id='"+(typeof(this.params.id) != "undefined" ? this.params.id+" " : "")+"progressbox_"+this.componentID+"'"+
+    "id='"+(typeof(this.params.id) != "undefined" ? this.params.id+" " : "")+this.selector().substr(1)+"'"+
     (typeof(this.params.style) != "undefined" ? "style='"+this.params.style+"' " : "")+
     ">";
   
@@ -22,4 +22,7 @@ UI.componentClasses.progressbox.prototype.update = function () {
   $('progressbox_'+this.componentID+' .value').html(this.params.progressObject.progressValue());
   $('progressbox_'+this.componentID+' .maxValue').html(this.params.progressObject.progressMaxValue());
   
+}
+UI.componentClasses.progressbox.prototype.selector = function () {
+    return "#progressbox_"+this.componentID;
 }
