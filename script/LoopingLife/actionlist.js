@@ -26,7 +26,9 @@ function ActionList () {
       actID : actID,
       count : 1,
       done : 0,
-    })
+    });
+    UI.components.ActionList.toDraw = true;
+    UI.draw();
   }
   this.tick = function(tickCount) {
     while (tickCount > 0) {

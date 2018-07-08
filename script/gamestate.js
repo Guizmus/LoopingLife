@@ -25,7 +25,8 @@ GameState = {
     $.each(GameState.vars,function(className,classObject) {
       saveData[className] = GameState.vars[className].saveGameState.call(GameState);
     });
-    console.log("saving data",saveData)
+    if (GameState.debug)
+      console.log("saving data",saveData)
     localStorage.setItem(Utils.gameName,JSON.stringify(saveData));
   },
   load : function () {

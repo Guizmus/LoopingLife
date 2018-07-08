@@ -89,7 +89,7 @@ View = {
   },
   
   buildActionList : function () {
-      UI.addComponent('list','actionList',{
+      UI.addComponent('list','ActionList',{
         selector : '#actionList',
         list : GameState.vars.ActionList,
         title : _txt('actions>titles>actionList'),

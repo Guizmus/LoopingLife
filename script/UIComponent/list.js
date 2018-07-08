@@ -17,6 +17,10 @@ UI.componentClasses.list.prototype.html = function () {
   html += "</ul>";
   return html;
 }
+UI.componentClasses.list.prototype.updateActive = function () {
+  $(this.selector+" .selected").removeClass("selected");
+  $($(this.selector+" li")[this.params.list.index()]).addClass("selected");
+}
 UI.componentClasses.list.prototype.selector = function () {
     return this.params.selector;
 }
