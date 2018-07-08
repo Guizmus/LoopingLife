@@ -30,6 +30,7 @@ function Main () {
     // state = new LoopingLifeState();
     GameState.registerVar(LoopingLifeState);
     GameState.registerVar(Actions);
+    GameState.registerVar(Resources);
     GameState.vars.LoopingLifeState.generateStageData('stage_1');
     // GameState.save();
   };

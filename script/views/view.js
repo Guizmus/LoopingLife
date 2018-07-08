@@ -51,13 +51,13 @@ View = {
       html : function () {
         var that = this;
         var html = "<ul>";
-        $(Object.keys(GameState.vars.LoopingLifeState.data.resources)).each(function(x,resID) {
+        $(Object.keys(GameState.vars.Resources.get())).each(function(x,resID) {
           html += "<li>"+_txt('resources>'+resID+'>libel')+" : <span id='resourceCount_"+resID+"'>"+that.innerHtml(resID)+"</span></li>";
         })
         return html
       },
       innerHtml : function(resID) {
-        return GameState.vars.LoopingLifeState.data.resources[resID].getValue();
+        return GameState.vars.Resources.get(resID).getValue();
       },
       updateValue : function (resID) {
         $("#resourceCount_"+resID).html(this.innerHtml(resID))

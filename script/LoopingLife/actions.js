@@ -49,6 +49,8 @@ function Actions () {
     return data[actID];
   }
   this.new = function(actID,actConfig,actData) {
+    if (typeof(data[actID]) != "undefined")
+      return false;
     if (debug)
       console.log("new action",actID,actConfig,actData)
     data[actID] = new Action(actID,actData,actData);
@@ -76,5 +78,5 @@ function Actions () {
 
 window.test = function() {
   console.log("runing the test")
-  GameState.vars.LoopingLifeState.earnResource("lifeMater",1);
+  GameState.vars.Resources.earn("lifeMater",1);
 }
