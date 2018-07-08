@@ -40,20 +40,25 @@
     <stage_1>
       <changeStage>
         <libel>Grandir</libel>
+        <info>Il est temps de passer de 4 à 2 appuis</info>
       </changeStage>
       <crying>
         <libel>Pleurer</libel>
+        <info>La tristesse est partie intégrante de la vie</info>
       </crying>
       <playing>
         <libel>Jouer</libel>
+        <info>Le carré va dans le carré</info>
       </playing>
       <resting>
         <libel>Dormir</libel>
+        <info>Le meilleur moment de la journée</info>
       </resting>
     </stage_1>
     <stage_2>
       <resting>
         <libel>Dormir</libel>
+        <info>Passez une bonne nuit</info>
       </resting>
     </stage_2>
   </actions>

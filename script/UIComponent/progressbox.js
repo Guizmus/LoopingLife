@@ -8,11 +8,11 @@ UI.componentClasses.progressbox.prototype.html = function () {
     (typeof(this.params.style) != "undefined" ? "style='"+this.params.style+"' " : "")+
     ">";
   
-    html += "<span class='libel'>"+this.params.progressObject.txt("libel")+"</span>";
+    html += "<span class='libel info'>"+this.params.progressObject.txt("libel")+"<span class='infoContent'>"+this.params.progressObject.txt("info")+"</span></span>";
     
-    html += "<span class='value'>"+this.params.progressObject.progressValue()+"</span>"+
+    html += "<div class='progressValues'><span class='value'>"+this.params.progressObject.progressValue()+"</span>"+
       " / "+
-      "<span class='maxValue'>"+this.params.progressObject.progressMaxValue()+"</span>";
+      "<span class='maxValue'>"+this.params.progressObject.progressMaxValue()+"</span></div>";
   
   html += "</div>";
   return html;

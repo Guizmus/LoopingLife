@@ -40,20 +40,25 @@
     <stage_1>
       <changeStage>
         <libel>Grow up</libel>
+        <info>Time to get on your feet</info>
       </changeStage>
       <crying>
         <libel>Cry</libel>
+        <info>Being sad is part of being alive</info>
       </crying>
       <playing>
         <libel>Play</libel>
+        <info>Square goes into square</info>
       </playing>
       <resting>
         <libel>Sleep</libel>
+        <info>The best time of all</info>
       </resting>
     </stage_1>
     <stage_2>
       <resting>
         <libel>Sleep</libel>
+        <info>Have a good night</info>
       </resting>
     </stage_2>
   </actions>
