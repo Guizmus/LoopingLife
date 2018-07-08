@@ -3,9 +3,7 @@ function Main () {
   this.version = "0.0.1"; // save file version control
   this.dependancies = {
     js : [
-      'script/gamestate.js',
-      'script/ui.js',
-      'script/gamemechanics.js',
+      
       'GAMEDIR/defines.js',
       'GAMEDIR/loopinglifestate.js',
       'GAMEDIR/actions.js',

@@ -34,6 +34,7 @@ Utils = {
           });
       }
     },
+    toLoad : 0,
     loadScripts : function(scripts,callback) { // handling sequential loading for js scripts
       if (typeof(scripts) == "string") {
         var alreadyLoaded = false;
@@ -46,17 +47,34 @@ Utils = {
         }
         scripts = [scripts];
       }
+      
       if (scripts.length == 0) {
         return callback.call(this);
       }
-      script = scripts.shift();
-      script = script.replace("GAMEDIR","script/"+Utils.gameName);
-      script = script.replace("VIEWDIR","script/views");
-      script = script.replace("COMPONENT","script/UIComponent");
-      $.getScript(script, function() {
-        Utils.loading.scriptsLoaded.push(script);
-        Utils.loading.loadScripts(scripts,callback);
-      });
+      
+      if(Utils.loading.toLoad>0)
+        console.error("Starting a batch loading of js script while the queue is not empty",scripts)
+        
+      Utils.loading.toLoad = scripts.length;
+      $(scripts).each(function(x,script) {
+        script = script.replace("GAMEDIR","script/"+Utils.gameName);
+        script = script.replace("VIEWDIR","script/views");
+        script = script.replace("COMPONENT","script/UIComponent");
+        $.getScript(script, function() {
+          Utils.loading.scriptsLoaded.push(script);
+          Utils.loading.toLoad --;
+          if (Utils.loading.toLoad == 0)
+            callback();
+        });
+      })
+      // script = scripts.shift();
+      // script = script.replace("GAMEDIR","script/"+Utils.gameName);
+      // script = script.replace("VIEWDIR","script/views");
+      // script = script.replace("COMPONENT","script/UIComponent");
+      // $.getScript(script, function() {
+      //   Utils.loading.scriptsLoaded.push(script);
+      //   Utils.loading.loadScripts(scripts,callback);
+      // });
     },
     loadXML : function (xml,callback) {
       $.get(xml,null,callback);
