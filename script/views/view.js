@@ -76,16 +76,16 @@ View = {
         eventListeners : GameState.vars.Actions.get(actID).eventListeners,
       })
     })
-    // UI.addComponent('infobox','ActionList',{
-    //   selector : '#actionList',
-    //   html : function () {
-    //     var html = "<button id='add_resource'>Add resource</button>";
-    //     return html
-    //   },
-    //   eventListeners : [
-    //     ['#add_resource','click',test],
-    //   ],
-    // })
+    UI.addComponent('infobox','Test',{
+      selector : '#test',
+      html : function () {
+        var html = "<button id='test'>Test</button>";
+        return html
+      },
+      eventListeners : [
+        ['#test','click',test],
+      ],
+    })
   },
   
   buildActionList : function () {

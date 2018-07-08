@@ -1,4 +1,4 @@
-window.gameMechanics = {
+GameMechanics = {
   applyMechanic : function(mechanic,value) {
     switch (mechanic.type) {
       case 'decay' :
@@ -8,13 +8,13 @@ window.gameMechanics = {
         switch (mechanic.method) {
           case 'percent' :
             // applies the rate of decay, aiming toward the goal, upward or downward
-            value = goal + ((value - goal) * (1-mechanic.rate));
+            value = mechanic.goal + ((value - mechanic.goal) * (1-mechanic.rate));
             break;
           case 'step' :
-            if (value > goal) {
-              value = goal + (math.max(0,value - mechanic.rate));
+            if (value > mechanic.goal) {
+              value = mechanic.goal + (math.max(0,value - mechanic.rate));
             } else {
-              value = goal + (math.min(0,value + mechanic.rate));
+              value = mechanic.goal + (math.min(0,value + mechanic.rate));
             }
             break;
           default :

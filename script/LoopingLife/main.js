@@ -9,6 +9,7 @@ function Main () {
       'GAMEDIR/actions.js',
       'GAMEDIR/resources.js',
       'GAMEDIR/actionlist.js',
+      'GAMEDIR/timeControl.js',
       
       'COMPONENT/infobox.js',
       'COMPONENT/progressbox.js',
@@ -35,6 +36,7 @@ function Main () {
     GameState.registerVar(Actions);
     GameState.registerVar(Resources);
     GameState.registerVar(ActionList);
+    GameState.registerVar(TimeControl);
     GameState.vars.LoopingLifeState.generateStageData('stage_1');
     // GameState.save();
   };

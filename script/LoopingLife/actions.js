@@ -93,5 +93,5 @@ function Actions () {
 
 window.test = function() {
   console.log("runing the test")
-  GameState.vars.Resources.earn("lifeMater",1);
+  GameState.vars.TimeControl.tick(1);
 }

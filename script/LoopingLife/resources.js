@@ -22,6 +22,19 @@ function Resources () {
     this.add = function (count) {
       value += count;
     }
+    
+    this.tick = function (ticks)  {
+      console.log("ticking resources",this.resID,ticks,resConfig)
+      var mechanic = resConfig.mechanic[GameState.vars.LoopingLifeState.data.stage];
+      if (typeof(mechanic) != "undefined") {
+        while (ticks>0) {
+          value = GameMechanics.applyMechanic(mechanic,value);
+          ticks --;
+        }
+      }
+      UI.components.Resources.params.updateValue(this.resID);
+    }
+    
     this.saveGameState = function () {
       return {
         resID : this.resID,
@@ -65,6 +78,13 @@ function Resources () {
     data[resID].add(count);
     UI.components.Resources.params.updateValue(resID)
   }
+  
+  this.tick = function (ticks)  {
+    $(Object.keys(data)).each(function(x,actID) {
+      data[actID].tick(ticks);
+    })
+  }
+  
   this.loadGameState = function (d) {
     if (debug)
       console.log("loading resource data",d)
